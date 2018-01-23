@@ -18,4 +18,6 @@ public interface TranscationService {
     public Long sumOfTxns(Long txnId);
 
     public List<Long> retrieveIDsByType(String type);
+
+    public void deleteTransactionRecord(Long txnID);
 }

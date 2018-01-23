@@ -1,0 +1,5 @@
+
+*.class
+target/maven-archiver/pom.properties
+
+/target/*

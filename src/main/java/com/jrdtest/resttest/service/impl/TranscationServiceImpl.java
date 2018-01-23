@@ -62,4 +62,11 @@ public class TranscationServiceImpl implements TranscationService {
         return null;
     }
 
+    @Override
+    public void deleteTransactionRecord(Long txnID) {
+        if (null != txnID) {
+            transactionRepository.delete(txnID);
+        }
+    }
+
 }

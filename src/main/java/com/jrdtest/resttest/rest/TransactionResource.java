@@ -55,6 +55,14 @@ public class TransactionResource {
         return new ResponseEntity<>(new TransactionRS("No Data Found"), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/transaction/{txnID}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> deleteTransaction(@PathVariable(required = true) Long txnID) {
+        transactionService.deleteTransactionRecord(txnID);
+        TransactionRS transactionResponse = new TransactionRS();
+        transactionResponse.setStatus("ok");
+        return new ResponseEntity<TransactionRS>(transactionResponse, HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/types/{type}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getIDsOfGivenType(@PathVariable(required = true) String type) {
         List<Long> idList = transactionService.retrieveIDsByType(type);
